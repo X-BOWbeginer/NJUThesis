@@ -11,22 +11,22 @@
 % info 类用于录入个人信息
 %   带*号的为对应英文字段
 \njusetup[info]{
-    title = {第一行标题\\第二行标题\\第三行标题},
+    title = {基于clangAST的c++程序流图生成与日志定位的工具},
     % 中文题目
     % 直接填写标题就是自动换行
     % 可以使用换行控制符(\\)手动指定换行位置
     %
-    title* = {My Title in English},
+    title* = {C++ program flow graph generation and log positioning tool based on clangAST},
     % 英文题目
     %
-    author = {姓名},
+    author = {陈毅琦},
     % 作者姓名
     %
-    author* = {Ming Xing},
+    author* = {Yiqi Chen},
     % 作者英文姓名
     % 一般使用拼音
     %
-    keywords = {我,就是,充数的,关键词},
+    keywords = {clang,libclang,日志链,抽象语法树，程序控制流图，networkx},
     % 中文关键词列表
     % 使用英文半角逗号(,)分隔
     %
@@ -34,27 +34,27 @@
     % 英文关键词
     % 使用英文半角逗号(,)分隔
     %
-    grade = {2018},
+    grade = {2020},
     % 年级
     %
-    student-id = {181850195},
+    student-id = {201220167},
     % 学号或工号
     % 研究生请斟酌大小写字母格式
     % 本模板并不会自动更正大小写
     %
-    department = {化学化工学院},
-    department* = {School of Chemistry and Chemical Engineering},
+    department = {计算机科学与技术系},
+    department* = {Computer Science and Technology Department},
     % 院系
     %
-    major = {化学},
-    major* = {Chemistry},
+    major = {计算机科学与技术},
+    major* = {computer science and technology},
     % 专业
     %
     % major = {封面专业,摘要专业},
     % 研究生专业型学位可能遇到两处内容不一致的情况
     %
-    supervisor = {导师姓名,教授},
-    supervisor*= {Professor My Supervisor},
+    supervisor = {赵建华,教授},
+    supervisor*= {Zhao Jianhua},
     % 导师全称
     % 使用英文半角逗号(,)分隔中文姓名和职称
     %
@@ -63,7 +63,7 @@
     % 第二导师全称
     % 如果确实没有第二导师，不填写即可
     %
-    submit-date = {2022-05-20},
+    submit-date = {2024-05-20},
     % 提交日期
     % 格式为 yyyy-mm-dd
     % 不填就是编译当天日期
