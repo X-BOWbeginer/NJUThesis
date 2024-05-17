@@ -26,11 +26,11 @@
     % 作者英文姓名
     % 一般使用拼音
     %
-    keywords = {clang,libclang,日志链,抽象语法树，程序控制流图，networkx},
+    keywords = {clang,libclang,日志链,抽象语法树，程序控制流图，自动机},
     % 中文关键词列表
     % 使用英文半角逗号(,)分隔
     %
-    keywords* = {Dummy,Keywords,Here,{It Is}},
+    keywords* = {},
     % 英文关键词
     % 使用英文半角逗号(,)分隔
     %

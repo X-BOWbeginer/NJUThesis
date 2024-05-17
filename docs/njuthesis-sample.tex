@@ -52,11 +52,14 @@
 \input{njuthesis-setup.def}
 
 % 自行载入所需宏包
-% \usepackage{subcaption} % 嵌套小幅图像，比 subfig 和 subfigure 更新更好
+\usepackage{subcaption} % 嵌套小幅图像，比 subfig 和 subfigure 更新更好
 % \usepackage{siunitx} % 标准单位符号
 % \usepackage{physics} % 物理百宝箱
 % \usepackage[version=4]{mhchem} % 绘制分子式
-% \usepackage{listings} % 展示代码
+\usepackage{listings} % 展示代码
+
+\usepackage{xcolor}
+
 % \usepackage{algorithm,algorithmic} % 展示算法伪代码
 
 % 在导言区随意定制所需命令
@@ -118,13 +121,15 @@
 % 然后在这里用 \include 导入，例如
 %   \include{chapters/introduction}
 %   \include{chapters/environments}
+\include{chapters/ch1.tex}
+\include{chapters/ch2.tex}
+\include{chapters/ch3.tex}
+\include{chapters/ch4.tex}
+\include{chapters/ch5.tex}
 
-\chapter{引言}
 
-\section{量子计算}
 
-John Preskill 认为我们现在处于“含噪声的中型量子时代”。\cite{preskill2018}
-量子位的不稳定性和有限的量子比特数量限制了量子计算机的复杂度和纠错能力。
+
 
 %---------------------------------------------------------------------
 %	参考文献
@@ -138,7 +143,7 @@ John Preskill 认为我们现在处于“含噪声的中型量子时代”。\ci
 %---------------------------------------------------------------------
 
 \begin{acknowledgement}
-  感谢 \href{https://git.nju.edu.cn/nju-lug/lug-introduction}{LUG@NJU}。
+
 \end{acknowledgement}
 
 %---------------------------------------------------------------------
@@ -154,11 +159,11 @@ John Preskill 认为我们现在处于“含噪声的中型量子时代”。\ci
 %---------------------------------------------------------------------
 
 % 附录部分使用单独的字母序号
-\appendix
+%\appendix
 
 % 可以在这里插入补充材料
-\chapter{正文中涉及的数据及源代码}
-\dots
+%\chapter{正文中涉及的数据及源代码}
+%\dots
 
 % 完工
 \end{document}
