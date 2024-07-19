@@ -11,12 +11,12 @@
 % info 类用于录入个人信息
 %   带*号的为对应英文字段
 \njusetup[info]{
-    title = {基于clangAST的c++程序流图生成与日志定位的工具},
+    title = {基于clangAST的C语言程序流图生成与日志定位的工具原型},
     % 中文题目
     % 直接填写标题就是自动换行
     % 可以使用换行控制符(\\)手动指定换行位置
     %
-    title* = {C++ program flow graph generation and log positioning tool based on clangAST},
+    title* = {Prototype tool for generating control flow graphs and log localization in C programs based on Clang AST},
     % 英文题目
     %
     author = {陈毅琦},
@@ -26,11 +26,11 @@
     % 作者英文姓名
     % 一般使用拼音
     %
-    keywords = {clang,libclang,日志链,抽象语法树，程序控制流图，自动机},
+    keywords = {Clang,Libclang,日志链,抽象语法树，程序控制流图，自动机},
     % 中文关键词列表
     % 使用英文半角逗号(,)分隔
     %
-    keywords* = {},
+    keywords* = {Clang, Libclang, log chain, abstract syntax tree, control flow graph, automaton},
     % 英文关键词
     % 使用英文半角逗号(,)分隔
     %
@@ -43,11 +43,11 @@
     % 本模板并不会自动更正大小写
     %
     department = {计算机科学与技术系},
-    department* = {Computer Science and Technology Department},
+    department* = {Department of Computer Science and Technology},
     % 院系
     %
     major = {计算机科学与技术},
-    major* = {computer science and technology},
+    major* = {Computer Science and Technology},
     % 专业
     %
     % major = {封面专业,摘要专业},

@@ -40,7 +40,7 @@
     % minimal,                % 开启最小化模式
     %
     %   单双面模式，默认为适合印刷的双面模式
-    % oneside,                % 单面模式，无空白页
+     oneside,                % 单面模式，无空白页
     % twoside,                % 双面模式，每一章从奇数页开始
     %
     %   字体设置，不填写则自动调用系统预装字体，详见手册
@@ -52,13 +52,37 @@
 \input{njuthesis-setup.def}
 
 % 自行载入所需宏包
+%\usepackage{algpseudocode}
+%\usepackage[ruled,linesnumbered]{algorithm2e}
 \usepackage{subcaption} % 嵌套小幅图像，比 subfig 和 subfigure 更新更好
 % \usepackage{siunitx} % 标准单位符号
 % \usepackage{physics} % 物理百宝箱
 % \usepackage[version=4]{mhchem} % 绘制分子式
 \usepackage{listings} % 展示代码
-
+\usepackage{verbatim}
+\usepackage{tikz}
+\usetikzlibrary{graphs, positioning, quotes, shapes.geometric}
+\usepackage{tikz-qtree}
+\lstset{ %
+language=Python,                % choose the language of the code
+basicstyle=\footnotesize,       % the size of the fonts that are used for the code
+numbers=left,                   % where to put the line-numbers
+numberstyle=\footnotesize,      % the size of the fonts that are used for the line-numbers
+stepnumber=1,                   % the step between two line-numbers. If it is 1 each line will be numbered
+numbersep=5pt,                  % how far the line-numbers are from the code
+backgroundcolor=\color{white},  % choose the background color. You must add \usepackage{color}
+showspaces=false,               % show spaces adding particular underscores
+showstringspaces=false,         % underline spaces within strings
+showtabs=false,                 % show tabs within strings adding particular underscores
+frame=single,           % adds a frame around the code
+tabsize=2,          % sets default tabsize to 2 spaces
+captionpos=b,           % sets the caption-position to bottom
+breaklines=true,        % sets automatic line breaking
+breakatwhitespace=false,    % sets if automatic breaks should only happen at whitespace
+escapeinside={\%*}{*)}          % if you want to add a comment within your code
+}
 \usepackage{xcolor}
+\addbibresource{docs/njuthesis-sample.bib}
 
 % \usepackage{algorithm,algorithmic} % 展示算法伪代码
 
@@ -82,16 +106,17 @@
 \raggedbottom
 
 \begin{abstract}
+在系统的开发和维护过程中，日志记录分析是获取系统运行状态和定位问题的重要手段。随着软件规模和复杂性的不断增加，开发人员和维护人员需要面对越来越多的日志数据和调试任务。尽管软件系统在运行时会生成大量日志记录，但如何有效地利用这些日志记录来获取有价值的信息，仍然是一个值得讨论的问题。传统的日志分析方法往往需要大量的时间，并且在面对大型系统时尤为困难。因此，研究如何高效利用日志记录进行分析和信息提取具有重要意义。本研究旨在探索并提出一种基于现有工具的方法，通过更准确地分析日志记录，帮助系统开发和维护人员更快地获取有用的信息，从而提高软件开发和维护的效率。
 
-在系统的开发和维护过程中，错误定位工作作为排除系统错误的首要步骤，是一个关键的问题。随着软件规模和复杂性的不断增加，我们会面临着越来越多的错误定位和调试任务。
-尽管软件系统在运行时会生成日志记录，但是如何有效地利用这些日志记录来定位和解决错误，发生错误时系统调用栈的状态仍然值得讨论。
-传统朴素的错误定位方法往往需要大量的时间，并且在面对大型系统时尤为困难。因此，研究如何高效利用日志记录来定位和解决软件系统中的错误具有重要意义。本研究旨在探索并提出一种基于现有工具，更加准确的方法来利用日志记录进行软件错误定位，以帮助系统开发、维护，更快地定位错误，提高软件开发的效率。
-
-在技术方面，选择使用clang生成待分析c++程序的的抽象语法分析树，然后借助libclang的python接口，完成对抽象语法分析树的解析，并生成相应的程序控制流图，以自动机的方式存储，接着需要将生成的非确定有限状态自动机，根据日志函数生成转化为确定有限状态自动机，这样便形成了基于代码中的日志关系生成日志链，供我们对运行日志进行推理，定位。同时，本程序使用了networkx与Gephi进行可视化展示。
+在技术方面，选择使用clang生成待分析c语言程序的的抽象语法分析树，然后借助libclang的python接口，完成对抽象语法分析树的解析，并生成相应的程序控制流图，以自动机的方式存储，接着需要将生成的非确定有限状态自动机，根据日志函数生成转化为确定有限状态自动机，这样便形成了基于代码中的日志关系生成日志链，供我们对运行日志进行推理，定位。同时，本工具原型使用了networkx与Gephi进行可视化展示。
 \end{abstract}
 
 \begin{abstract*}
-  English abstract
+During the development and maintenance of a system, error localization is a critical issue as it is the primary step in troubleshooting system errors. With the increasing scale and complexity of software, we are faced with an ever-growing number of error localization and debugging tasks. Although software systems generate log records during runtime, effectively utilizing these logs to pinpoint and resolve errors, as well as understanding the state of the system call stack at the time of an error, remains a topic worth discussing.
+
+Traditional naive methods of error localization often require significant amounts of time and are especially challenging when dealing with large systems. Therefore, researching how to efficiently utilize log records to localize and resolve errors in software systems is of great importance. This study aims to explore and propose a more accurate method, based on existing tools, to use log records for software error localization, thereby assisting in system development and maintenance, speeding up error localization, and improving software development efficiency.
+
+Technically, we choose to use Clang to generate the Abstract Syntax Tree (AST) for the C language program to be analyzed. Then, using the Python interface of libclang, we parse the AST and generate the corresponding control flow graph, storing it as a finite state machine. Next, we need to convert the generated non-deterministic finite automaton into a deterministic finite automaton based on the log functions, thus forming a log chain based on the relationships in the code, which we can use to infer and localize errors from the runtime logs. Additionally, this prototype tool uses NetworkX and Gephi for visualization.
 \end{abstract*}
 
 % 生成目录
@@ -126,13 +151,14 @@
 \include{chapters/ch3.tex}
 \include{chapters/ch4.tex}
 \include{chapters/ch5.tex}
-
+\include{chapters/ch6.tex}
 
 
 
 
 %---------------------------------------------------------------------
 %	参考文献
+
 %---------------------------------------------------------------------
 
 % 生成参考文献页
@@ -143,7 +169,13 @@
 %---------------------------------------------------------------------
 
 \begin{acknowledgement}
+我要先感谢赵建华老师，在毕业设计初期，他解答了我许多研究方向上的疑问；在论文写作过程中，他耐心指导我修改文章结构和逻辑问题，使得原本自言自语的内容变得更加清晰易懂。祝愿赵老师在未来的工作中一帆风顺，身体健康。
 
+感谢知乎用户YKIKO，通过他详细的Clang工具教程，我逐步掌握了其使用技巧；他还乐于解答我在研究初期遇到的问题，帮助我少走了不少弯路。期待YKIKO能继续创作更多优质的中文教程，为更多人提供帮助。
+
+特别感谢我的好朋友们，在我情绪低落时陪伴我闲聊、打游戏，以及一起逛新街口，这为我完成毕业设计提供了巨大动力。祝愿你们在未来的学习与工作中一切顺利，心情常开。
+
+最后，也要感谢自己，在开发工具过程中虽然曲折，但终究完成了设定的目标；同时，感谢自己在论文修改中的耐心与认真。希望未来能够从事自己喜欢的工作，人生道路虽有弯弯曲曲，最终也能迈向一个“还不错”的结果。
 \end{acknowledgement}
 
 %---------------------------------------------------------------------
